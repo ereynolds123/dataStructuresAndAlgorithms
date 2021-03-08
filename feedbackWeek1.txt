@@ -1,0 +1,14 @@
+1) The thing I learned this week was about control
+flows. I had never heard the term control flows. I learned
+how to use them and wrote a program about one.
+
+2) A question I have is how to use the date and time
+in python so you can write programs that interact with time.
+
+3) The hardest part of this week was determining what was meant
+by the assignments. I had a hard time knowing what to
+write for my control flow. 
+
+4) The easiest part of the week was writing the simple programs
+
+5) I spent about 5 hours on the material for the week. 
