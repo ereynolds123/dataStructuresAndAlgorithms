@@ -7,4 +7,6 @@ phraseToRepeat = "I will never spam my friends again."
 # 100 times. 
 for phraseAmount in range(100):
     print(phraseToRepeat)
-    
+
+
+#https://www.screencast.com/t/smwEpVs8
