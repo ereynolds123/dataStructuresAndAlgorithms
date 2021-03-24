@@ -10,8 +10,8 @@ def compare (u1, u2):
     if u1== u2:
         return("It's a tie")
         
-    elif user1 =="paper":
-        if user2 == rock:
+    elif u1 =="paper":
+        if u2 == rock:
             print(user1, "you win")
             
 print(compare(user1_answer, user2_answer))
