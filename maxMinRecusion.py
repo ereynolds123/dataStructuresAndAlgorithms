@@ -1,21 +1,30 @@
-#Take an arrary "arr" 
-def findMax(arr):
-    #If the amount in the array is one, your min and max are both the array[0]
+#Take an arrary "arr". Return min and max of the array using recursion    
+def findMinMax(arr):
+    #Base case
     if len(arr)== 1:
+        min = arr[0]
         max =arr[0]
-    else:
-        recurMax =findMax(arr[1:])
         
-        #If the first number is greater than the second, your max because the first and the min becomes the second.
-        #Recursively call the min
+  
+    else:
+        #Calculate the min, max of the remainder of the array. 
+        recurMin, recurMax =findMinMax(arr[1:])
+        
+
+        #Calculate the min
+        if arr[0]< recurMin:
+            min = arr[0]
+        else:
+            min =recurMin
+            
+        #Calculate the max    
         if arr[0]> recurMax:
             max = arr[0]
-
-        #If the first number is less than the second, your max because the second and the min becomes the first.
-        #Recursively call the min
         else:
-            max =recurMax 
-    return max
-    
-max =findMax([3,12, 18,6])
-print("The max is {}".format(max))
+            max =recurMax
+            
+    return min, max
+
+#Print the min, max of the list
+min, max =findMinMax([3, 2, 4, 6,8 ])
+print("The min is {}, the max is {}".format(min, max))
