@@ -16,4 +16,7 @@ def reverse(arr):
         fragment = str(reverseFragment) + " " + str(arr[0])
         return fragment
     
-print(reverse([45, 56, 77, 98]))
+print(reverse([54, 66, 92,15]))
+
+
+#https://www.screencast.com/t/mgFWzmfrrKA7
