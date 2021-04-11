@@ -28,3 +28,5 @@ def findMinMax(arr):
 #Print the min, max of the list
 min, max =findMinMax([3, 2, 4, 6,8 ])
 print("The min is {}, the max is {}".format(min, max))
+
+#https://www.screencast.com/t/mgFWzmfrrKA7
