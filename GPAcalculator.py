@@ -9,7 +9,8 @@ grades_list = {98:15, 45:10, 89:50}
 
 def GPAcalculate(accumulator_Variable, dictionary):
     for key, value in dictionary.items():
-        print (key, value)
+        totalPoints = key * (value/100)
+        print(totalPoints)
         
 GPAcalculate(total_grades, grades_list)
     
