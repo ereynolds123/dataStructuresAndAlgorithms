@@ -1,34 +1,23 @@
-from collections import defaultdict
-from itertools import product
-import os
+#Word ladder problem
+from pythonds.graphs import Graph
 
-
-def build_graph(words):
-    buckets = defaultdict(list)
-    graph = defaultdict(set)
-
-    for word in words:
+def buildGraph(wordFile):
+    d = {}
+    g = Graph()
+    wfile = open(wordFile,'r')
+    # create buckets of words that differ by one letter
+    for line in wfile:
+        word = line[:-1]
         for i in range(len(word)):
-            bucket = '{}_{}'.format(word[:i], word[i + 1:])
-            buckets[bucket].append(word)
-
+            bucket = word[:i] + '_' + word[i+1:]
+            if bucket in d:
+                d[bucket].append(word)
+            else:
+                d[bucket] = [word]
     # add vertices and edges for words in the same bucket
-    for bucket, mutual_neighbors in buckets.items():
-        for word1, word2 in product(mutual_neighbors, repeat=2):
-            if word1 != word2:
-                graph[word1].add(word2)
-                graph[word2].add(word1)
-
-    return graph
-
-
-def get_words(vocabulary_file):
-    for line in open(vocabulary_file, 'r'):
-        yield line[:-1]  # remove newline character
-
-
-vocabulary_file = os.path.join(os.path.dirname(__file__), 'vocabulary.txt')
-word_graph = build_graph(get_words(vocabulary_file))
-
-# word_graph['FOOL']
-# set(['POOL', 'WOOL', 'FOWL', 'FOAL', 'FOUL', ... ])
+    for bucket in d.keys():
+        for word1 in d[bucket]:
+            for word2 in d[bucket]:
+                if word1 != word2:
+                    g.addEdge(word1,word2)
+    return g
