@@ -16,5 +16,9 @@ def main():
 
     if studentGPA.get("Sweeny Todd"):
         print("Data exists")
+    else:
+        print("Data not found")
         
 main()
+
+#https://www.screencast.com/t/BwsGgg2hLm

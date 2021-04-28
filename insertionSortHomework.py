@@ -1,18 +1,22 @@
-# Python program for implementation of Insertion Sort
-  
-# Function to do insertion sort
+#A python program to do an insertion sort
+#Compare the first number to the rest of the list
+
 def insertionSort(arr):
-  
-    # Traverse through 1 to len(arr)
-    for i in range(1, len(arr)):
-  
-        key = arr[i]
-  
-        # Move elements of arr[0..i-1], that are
-        # greater than key, to one position ahead
-        # of their current position
-        j = i-1
-        while j >=0 and key < arr[j] :
-                arr[j+1] = arr[j]
-                j -= 1
-        arr[j+1] = key
+    #Find the length of the array
+    indexLen = range(1, len(arr))
+    
+    #For every value
+    for i in indexLen:
+        valueToSort = arr[i]
+        
+        #If value at the next position is higher than the value to sort, switch position
+        while arr[i-1]> valueToSort and i> 0:
+            arr[i], arr[i-1] = arr[i-1], arr[i]
+            #Step down the list to compare. Get value to sort, compare to item to the left, check next item
+            i = i-1
+            
+    return arr
+
+print(insertionSort([1, 5, 4, 2, 7]))
+
+#https://www.screencast.com/t/OTnyHRszka

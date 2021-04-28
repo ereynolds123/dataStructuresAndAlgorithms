@@ -19,3 +19,5 @@ def selection_sort(unsortedList):
     return unsortedList
 
 print(selection_sort([7,8,9,8,7,6,5,6,7,8,9,0]))
+
+#https://www.screencast.com/t/2opJtZdoe1Ht
