@@ -1,5 +1,6 @@
 #Tree node class
 class TreeNode:
+    #Initialize the tree
     def __init__(self,key,val,left=None,right=None,
                                        parent=None):
         self.key = key
@@ -7,16 +8,19 @@ class TreeNode:
         self.leftChild = left
         self.rightChild = right
         self.parent = parent
-
+    
     def getLeftChild(self):
         return self.leftChild
 
     def getRightChild(self):
         return self.rightChild
-    
-    def getRootVal(self):
+    #Returns the value of the tree
+    def getVal(self):
         return self.val
-
+   
+    def getKey(self):
+        return self.key
+    #Tells if you are a left child of some other node
     def isLeftChild(self):
         return self.parent and self.parent.leftChild == self
 
@@ -29,40 +33,23 @@ class TreeNode:
     def isLeaf(self):
         return not (self.rightChild or self.leftChild)
 
-    def hasAnyChildren(self):
-        return self.rightChild or self.leftChild
 
     def hasBothChildren(self):
         return self.rightChild and self.leftChild
 
-    def replaceNodeData(self,key,value,lc,rc):
-        self.key = key
-        self.payload = value
-        self.leftChild = lc
-        self.rightChild = rc
-        if self.hasLeftChild():
-            self.leftChild.parent = self
-        if self.hasRightChild():
-            self.rightChild.parent = self
-            
-     
-
 
 #Binary search tree class
+#Maps keys to values 
 class BinarySearchTree:
 
     def __init__(self):
         self.root = None
         self.size = 0
 
-    def length(self):
-        return self.size
 
     def __len__(self):
         return self.size
 
-    def __iter__(self):
-        return self.root.__iter__()
     
     def put(self,key,val):
         if self.root:
@@ -70,6 +57,7 @@ class BinarySearchTree:
         else:
             self.root = TreeNode(key,val)
             self.size = self.size + 1
+            
     #Adds to the tree
     def _put(self,key,val,currentNode):
         if key < currentNode.key:
@@ -86,7 +74,7 @@ class BinarySearchTree:
 #Preorder traversal 
 def preorder(tree):
     if tree:
-        print(tree.getRootVal())
+        print(tree.getVal())
         preorder(tree.getLeftChild())
         preorder(tree.getRightChild())
         
@@ -96,13 +84,13 @@ def postorder(tree):
     if tree != None:
         postorder(tree.getLeftChild())
         postorder(tree.getRightChild())
-        print(tree.getRootVal())
+        print(tree.getVal())
         
 #Inorder traversal       
 def inorder(tree):
   if tree != None:
       inorder(tree.getLeftChild())
-      print(tree.getRootVal())
+      print(tree.getVal())
       inorder(tree.getRightChild())
 
 #Prints the tree 
@@ -110,7 +98,7 @@ def printexp(tree):
   sVal = ""
   if tree:
       sVal = '(' + printexp(tree.getLeftChild())
-      sVal = sVal + str(tree.getRootVal())
+      sVal = sVal + str(tree.getVal())
       sVal = sVal + printexp(tree.getRightChild())+')'
   return sVal
 
