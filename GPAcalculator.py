@@ -1,9 +1,12 @@
 #This program is a GPA calculator for my final Data Structures course
+#Import Binary Search Tree
+import binarySearchTree 
 
 #Add all grades in one class to dictionary. Each class has a dictionary. 
 #The first item of the key pair is the grade percentage, the second item is the possible total points
 gradesList = {98:15, 45:10, 89:50}
 gradesListTwo ={97:20, 67:10, 91:50}
+gradesListThree = {89:20, 65:10, 75:50}
 
 #List of all class GPAs
 listOfGPAs = []
@@ -24,7 +27,7 @@ def GPA_calculate(dictionary):
     #Sums the amount of Earned points
     sumOfEarnedPoints =sum(listOfEarnedPoints)
     
-    print("This is the list of Earned Points", listOfEarnedPoints)
+    #print("This is the list of Earned Points", listOfEarnedPoints)
     print("Total Earned points", sumOfEarnedPoints)
     
     #Finds the total potential grade points
@@ -46,7 +49,25 @@ def GPA_calculate(dictionary):
 
 GPA_calculate( gradesList)
 GPA_calculate(gradesListTwo)
-print(listOfGPAs)
+GPA_calculate(gradesListThree)
+
+def printGPA(tree):
+    if tree != None:
+      printGPA(tree.getLeftChild())
+      print("Your GPA in order is", tree.getVal())
+      printGPA(tree.getRightChild())
+
+def main():
+    binaryTree = binarySearchTree.BinarySearchTree()
+
+    for i in range((len(listOfGPAs))):
+        binaryTree.put(listOfGPAs[i], listOfGPAs[i])
+        
+    #binarySearchTree.inorder(binaryTree.root)
+    printGPA(binaryTree.root)
+main()
+
+
 
 
     

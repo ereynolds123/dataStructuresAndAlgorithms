@@ -60,6 +60,7 @@ class BinarySearchTree:
             
     #Adds to the tree
     def _put(self,key,val,currentNode):
+        #print("Debug", key, val)
         if key < currentNode.key:
             if currentNode.getLeftChild():
                self._put(key,val,currentNode.leftChild)
@@ -92,15 +93,8 @@ def inorder(tree):
       inorder(tree.getLeftChild())
       print(tree.getVal())
       inorder(tree.getRightChild())
+      
 
-#Prints the tree 
-def printexp(tree):
-  sVal = ""
-  if tree:
-      sVal = '(' + printexp(tree.getLeftChild())
-      sVal = sVal + str(tree.getVal())
-      sVal = sVal + printexp(tree.getRightChild())+')'
-  return sVal
 
 #Do a binary search tree
 def main():
@@ -112,5 +106,5 @@ def main():
         
     inorder(binaryTree.root)
 
-main()
+
 # https://www.screencast.com/t/NZszMJCCEF
