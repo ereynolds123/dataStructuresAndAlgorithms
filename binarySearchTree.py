@@ -1,18 +1,21 @@
 #Tree node class
 class TreeNode:
-   def __init__(self,key,val,left=None,right=None,
+    def __init__(self,key,val,left=None,right=None,
                                        parent=None):
         self.key = key
-        self.payload = val
+        self.val = val
         self.leftChild = left
         self.rightChild = right
         self.parent = parent
 
-    def hasLeftChild(self):
+    def getLeftChild(self):
         return self.leftChild
 
-    def hasRightChild(self):
+    def getRightChild(self):
         return self.rightChild
+    
+    def getRootVal(self):
+        return self.val
 
     def isLeftChild(self):
         return self.parent and self.parent.leftChild == self
@@ -41,7 +44,8 @@ class TreeNode:
             self.leftChild.parent = self
         if self.hasRightChild():
             self.rightChild.parent = self
-
+            
+     
 
 
 #Binary search tree class
@@ -69,12 +73,12 @@ class BinarySearchTree:
     #Adds to the tree
     def _put(self,key,val,currentNode):
         if key < currentNode.key:
-            if currentNode.hasLeftChild():
+            if currentNode.getLeftChild():
                self._put(key,val,currentNode.leftChild)
             else:
                currentNode.leftChild = TreeNode(key,val,parent=currentNode)
         else:
-            if currentNode.hasRightChild():
+            if currentNode.getRightChild():
                self._put(key,val,currentNode.rightChild)
             else:
                currentNode.rightChild = TreeNode(key,val,parent=currentNode)
@@ -112,12 +116,13 @@ def printexp(tree):
 
 #Do a binary search tree
 def main():
-    str = BinarySearchTree()
-    list = [50, 30, 23, 11, 25, 35, 31, 42, 70, 80, 73, 85]
+    binaryTree = BinarySearchTree()
+    binaryList = [50, 30, 23, 11, 25, 35, 31, 42, 70, 80, 73, 85]
     
-    for i in range((len(list))):
-        str.put(l[i])
+    for i in range((len(binaryList))):
+        binaryTree.put(binaryList[i], binaryList[i])
         
-    str.printtree()
-    
+    inorder(binaryTree.root)
+
+main()
 # https://www.screencast.com/t/NZszMJCCEF

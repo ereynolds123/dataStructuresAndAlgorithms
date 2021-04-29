@@ -1,13 +1,9 @@
 #This program is a GPA calculator for my final Data Structures course
 
-import itertools
-
-#Add all grades in one class to dictionary.
+#Add all grades in one class to dictionary. Each class has a dictionary. 
 #The first item of the key pair is the grade percentage, the second item is the possible total points
 gradesList = {98:15, 45:10, 89:50}
 gradesListTwo ={97:20, 67:10, 91:50}
-
-
 
 #List of all class GPAs
 listOfGPAs = []
@@ -25,6 +21,7 @@ def GPA_calculate(dictionary):
         #Creates a list of potential earned points
         listOfEarnedPoints.append(totalEarnedPoints)
     
+    #Sums the amount of Earned points
     sumOfEarnedPoints =sum(listOfEarnedPoints)
     
     print("This is the list of Earned Points", listOfEarnedPoints)
@@ -39,14 +36,18 @@ def GPA_calculate(dictionary):
     
     #Gives the total GPA per class
     totalGPAForEachClass = (sumOfEarnedPoints/totalPotentialPoints) * 100
-    print("Total GPA", totalGPAForEachClass)
+    print("Total GPA " +str(round(totalGPAForEachClass, 2)))
+    print("\n")
     
-    listOfGPAs.append(totalGPAForEachClass)
-    print(listOfGPAs)
+    #Creates a list of GPAs and appends the grade to it
+    listOfGPAs.append(round(totalGPAForEachClass,2))
+    return listOfGPAs
 
 
 GPA_calculate( gradesList)
 GPA_calculate(gradesListTwo)
+print(listOfGPAs)
+
 
     
     
